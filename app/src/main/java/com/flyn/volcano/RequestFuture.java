@@ -33,7 +33,7 @@ public class RequestFuture<T> implements Future<T>
                 mResult = response.getResult();
                 synchronized (RequestFuture.this)
                 {
-                    RequestFuture.this.notifyAll();
+                    ((Object)RequestFuture.this).notifyAll();
                 }
             }
 
@@ -44,7 +44,7 @@ public class RequestFuture<T> implements Future<T>
                 mException = error;
                 synchronized (RequestFuture.this)
                 {
-                    RequestFuture.this.notifyAll();
+                    ((Object)RequestFuture.this).notifyAll();
                 }
 
             }
@@ -109,10 +109,10 @@ public class RequestFuture<T> implements Future<T>
 
         if (timeoutMs == null)
         {
-            wait(0);
+            ((Object)RequestFuture.this).wait(0);
         } else if (timeoutMs > 0)
         {
-            wait(timeoutMs);
+            ((Object)RequestFuture.this). wait(timeoutMs);
         }
 
         if (mException != null)
