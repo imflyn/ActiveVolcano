@@ -18,18 +18,18 @@ import com.flyn.volcano.SpendTimer.TimerListener;
 
 public abstract class Request<T> implements Comparable<Request<T>>
 {
-    protected static final int  DEFAULT_RETRY_COUNT = 1;
+    protected static final int DEFAULT_RETRY_COUNT = 1;
 
-    private Listener            mListener;
-    private final String        url;
+    private Listener mListener;
+    private final String url;
     private final RequestParams requestPramas;
-    private final int           method;
-    private final int           retryCount;
-    private boolean             mResponseDelivered;
-    private boolean             mCanceled           = false;
-    private Integer             sequence;
-    private Object              tag;
-    private RequestQueue        mRequestQueue;
+    private final int method;
+    private final int retryCount;
+    private boolean mResponseDelivered;
+    private boolean mCanceled = false;
+    private Integer sequence;
+    private Object tag;
+    private RequestQueue mRequestQueue;
 
     public Request(String url, RequestParams requestPramas)
     {
@@ -243,13 +243,13 @@ public abstract class Request<T> implements Comparable<Request<T>>
         }
     }
 
-    public interface Method
+    public static class Method
     {
-        int GET    = 0;
-        int POST   = 1;
-        int PUT    = 2;
-        int DELETE = 3;
-        int HEAD   = 4;
+        public final static int GET = 0;
+        public final static int POST = 1;
+        public final static int PUT = 2;
+        public final static int DELETE = 3;
+        public final static int HEAD = 4;
     }
 
     @Override
