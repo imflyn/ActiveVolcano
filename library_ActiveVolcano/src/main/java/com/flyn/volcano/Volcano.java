@@ -5,6 +5,11 @@ import android.content.Context;
 public class Volcano
 {
 
+    private Volcano()
+    {
+
+    }
+
     public static RequestQueue newRequestQueue(Context context)
     {
         Network network = new BasicNetwork(new HttpUrlStack(context));
