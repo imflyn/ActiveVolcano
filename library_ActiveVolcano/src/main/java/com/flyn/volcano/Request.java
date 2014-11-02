@@ -1,5 +1,12 @@
 package com.flyn.volcano;
 
+import android.util.Log;
+
+import com.flyn.volcano.RequestParams.Header;
+import com.flyn.volcano.SpendTimer.TimerListener;
+
+import org.apache.http.HttpEntity;
+
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -8,13 +15,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.zip.GZIPInputStream;
-
-import org.apache.http.HttpEntity;
-
-import android.util.Log;
-
-import com.flyn.volcano.RequestParams.Header;
-import com.flyn.volcano.SpendTimer.TimerListener;
 
 public abstract class Request<T> implements Comparable<Request<T>>
 {
@@ -120,7 +120,6 @@ public abstract class Request<T> implements Comparable<Request<T>>
                 timer.stop();
                 try
                 {
-                    // 释放http连接所占用的资源
                     entity.consumeContent();
                     mPool.returnBuf(buffer);
                 } catch (IOException e)

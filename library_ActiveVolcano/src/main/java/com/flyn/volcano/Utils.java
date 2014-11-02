@@ -22,9 +22,13 @@ import android.net.NetworkInfo;
 
 public class Utils
 {
+
     /**
+     *
      * Returns the charset specified in the Content-Type of this header, or the
      * HTTP default (ISO-8859-1) if none can be found.
+     * @param headers
+     * @return
      */
     public static String parseCharset(Map<String, String> headers)
     {
@@ -59,6 +63,8 @@ public class Utils
 
     /**
      * Parse date in RFC1123 format, and return its value as epoch
+     * @param dateStr
+     * @return
      */
     public static long parseDateAsEpoch(String dateStr)
     {
@@ -73,11 +79,6 @@ public class Utils
         }
     }
 
-    /**
-     * close streams
-     * 
-     * @param stream
-     */
     public static void quickClose(Closeable stream)
     {
         if (null != stream)
@@ -95,10 +96,9 @@ public class Utils
 
     /**
      * get complete url
-     * 
      * @param url
      * @param params
-     * @return
+     * @return  url
      */
     public static String getUrlWithParams(String url, RequestParams params)
     {

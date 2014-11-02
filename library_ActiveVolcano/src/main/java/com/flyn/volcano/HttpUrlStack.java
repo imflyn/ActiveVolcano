@@ -1,5 +1,26 @@
 package com.flyn.volcano;
 
+import android.content.Context;
+import android.os.Build;
+import android.text.TextUtils;
+import android.util.Base64;
+import android.webkit.CookieManager;
+import android.webkit.CookieSyncManager;
+
+import com.flyn.volcano.Request.Method;
+import com.flyn.volcano.RequestParams.FileWrapper;
+import com.flyn.volcano.RequestParams.StreamWrapper;
+
+import org.apache.http.Header;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.ProtocolVersion;
+import org.apache.http.StatusLine;
+import org.apache.http.entity.BasicHttpEntity;
+import org.apache.http.message.BasicHeader;
+import org.apache.http.message.BasicHttpResponse;
+import org.apache.http.message.BasicStatusLine;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -15,27 +36,6 @@ import java.util.Properties;
 
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLSocketFactory;
-
-import org.apache.http.Header;
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.ProtocolVersion;
-import org.apache.http.StatusLine;
-import org.apache.http.entity.BasicHttpEntity;
-import org.apache.http.message.BasicHeader;
-import org.apache.http.message.BasicHttpResponse;
-import org.apache.http.message.BasicStatusLine;
-
-import android.content.Context;
-import android.os.Build;
-import android.text.TextUtils;
-import android.util.Base64;
-import android.webkit.CookieManager;
-import android.webkit.CookieSyncManager;
-
-import com.flyn.volcano.Request.Method;
-import com.flyn.volcano.RequestParams.FileWrapper;
-import com.flyn.volcano.RequestParams.StreamWrapper;
 
 public class HttpUrlStack implements HttpStack
 {
@@ -134,15 +134,14 @@ public class HttpUrlStack implements HttpStack
         }
         URL url = new URL(parsedUrl);
 
-        // 对移动wap网络的特殊处理 tips:经过测试似乎没有必要
-        if (Utils.CMMAP_Request(this.context))
-        {
-            String myURLStr = "http://10.0.0.172".concat(url.getPath());
-            String query = url.getQuery();
-            if (query != null)
-                myURLStr = myURLStr.concat("?").concat(query);
-            url = new URL(myURLStr);
-        }
+//        if (Utils.CMMAP_Request(this.context))
+//        {
+//            String myURLStr = "http://10.0.0.172".concat(url.getPath());
+//            String query = url.getQuery();
+//            if (query != null)
+//                myURLStr = myURLStr.concat("?").concat(query);
+//            url = new URL(myURLStr);
+//        }
 
         if (null != this.mProxy)
             connection = (HttpURLConnection) url.openConnection(this.mProxy);
