@@ -128,7 +128,7 @@ public class HttpUrlStack implements HttpStack
     private HttpURLConnection openConnection(String parsedUrl, Request<?> request) throws IOException
     {
         HttpURLConnection connection = null;
-        if (request.getMethod() != Method.POST || request.getMethod() != Method.PUT)
+        if (request.getMethod() != Method.POST && request.getMethod() != Method.PUT)
         {
             parsedUrl = Utils.getUrlWithParams(parsedUrl, request.getRequestPramas());
         }

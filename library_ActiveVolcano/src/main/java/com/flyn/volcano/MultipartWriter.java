@@ -155,7 +155,7 @@ public class MultipartWriter
 
     protected boolean isEmpty()
     {
-        return this.fileParts == null || this.fileParts.size() == 0;
+        return this.fileParts == null && this.fileParts.size() == 0 && this.out.count()<=0;
     }
 
     protected final String getBoundary()
