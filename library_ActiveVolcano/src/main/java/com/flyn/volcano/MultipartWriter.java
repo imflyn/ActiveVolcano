@@ -1,5 +1,9 @@
 package com.flyn.volcano;
 
+import android.util.Log;
+
+import com.flyn.volcano.SpendTimer.TimerListener;
+
 import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -10,10 +14,6 @@ import java.io.OutputStream;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
-
-import android.util.Log;
-
-import com.flyn.volcano.SpendTimer.TimerListener;
 
 public class MultipartWriter
 {
@@ -155,7 +155,7 @@ public class MultipartWriter
 
     protected boolean isEmpty()
     {
-        return this.fileParts == null && this.fileParts.size() == 0 && this.out.count()<=0;
+        return this.fileParts == null && this.fileParts.size() == 0 && this.out.size()<=0;
     }
 
     protected final String getBoundary()
