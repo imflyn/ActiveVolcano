@@ -1,6 +1,6 @@
 package com.flyn.volcano;
 
-public abstract class Listener
+public abstract class Listener<T>
 {
 
     public void onStart()
@@ -23,7 +23,7 @@ public abstract class Listener
 
     };
 
-    public abstract void onSuccess(Response<?> response);
+    public abstract void onSuccess(Response<T> response);
 
     public abstract void onFailure(Throwable error);
 

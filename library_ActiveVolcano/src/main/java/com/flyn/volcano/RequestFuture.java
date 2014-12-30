@@ -1,11 +1,11 @@
 package com.flyn.volcano;
 
+import android.util.Log;
+
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
-
-import android.util.Log;
 
 public class RequestFuture<T> implements Future<T>
 {
@@ -22,11 +22,11 @@ public class RequestFuture<T> implements Future<T>
 
     private RequestFuture()
     {
-        mListner = new Listener()
+        mListner = new Listener<T>()
         {
 
             @Override
-            public void onSuccess(Response<?> response)
+            public void onSuccess(Response<T> response)
             {
                 Log.i(RequestFuture.class.getSimpleName(), "onSuccess");
                 mResultReceived = true;
