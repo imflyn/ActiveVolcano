@@ -16,6 +16,7 @@ public abstract class Listener<T>
     public void onProgress(int bytesWritten, int bytesTotal, int currentSpeed)
     {
 
+
     };
 
     public void onCancel()
